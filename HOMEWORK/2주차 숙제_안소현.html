@@ -110,7 +110,13 @@
       document.getElementById("phn").focus();
       alert("전화번호를 입력하세요");
     } else{
-        let info= $(#;
+        let temp_html= '<tr>\
+        <td>'+ name + '</td>\
+        <td>'+ num + '</td>\
+        <td>'+ address + '</td>\
+        <td>'+ phone + '</td>\
+        </tr>';
+        $('#order_add').append(temp_html);
     }
   }
   function moveFocus(next){
@@ -193,14 +199,17 @@
       <tbody>
         <tr>
           <td>번호1</td>
-          <td><center>제목1</center></td>
+          <td>제목1</td>
           <td>날짜1</td>
         </tr>
         <tr>
           <td>번호2</td>
-          <td><center>제목2</center></td>
+          <td>제목2</td>
           <td>날짜2</td>
         </tr>
+      </tbody>
+      <tbody class="table" id="order_info">
+        
       </tbody>
     </table>
    </div>
