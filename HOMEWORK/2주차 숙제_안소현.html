@@ -1,59 +1,110 @@
 <!doctype html>
 <html lang="en">
+
 <head>
 
   <!-- Webpage Title -->
-  <title>주문서</title>
+  <title>향기주문서</title>
 
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-  <!-- JS -->   
+  <!-- JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 
   <!-- 구글폰트 -->
   <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
   <!-- style -->
+  
+  <script>
+
+    function confirm() {
+      let form1 = $('#name').val();
+      let form2 = $('#qyt').val();
+      let form3 = $('#address').val();
+      let form4 = $('#hp').val();
+
+      if (form1 == '') {
+        alert('이름을 입력하세요');
+        $('#name').focus();
+        // return form1.'#name'.focus(); 다른 형식 테스트
+
+      } else if (form2 == '') {
+        alert("수량을 선택하세요");
+        $('#qyt').focus();
+
+      } else if (form3 == '') {
+        alert("주소를 입력하세요");
+        $('#address').focus();
+
+      } else if (form4 == '') {
+        alert("전화번호를 입력하세요");
+        $('#hp').focus();
+    
+      } else {
+        alert("주문이 완료되었습니다");
+        let temp_html = '<tr>\
+                         <td>'+ form1 + '</td>\
+                         <td>'+ form2 + '</td>\
+                         <td>'+ form3 + '</td>\
+                         <td>'+ form4 + '</td>\
+                         </tr>';
+        $('#order_list').append(temp_html);
+      }
+
+    }
+
+  </script>
+  
   <style type="text/css">
     * {
       font-family: 'Noto Serif KR', serif;
       font-family: 'Noto Sans KR', sans-serif;
     }
+
     .wrap {
       width: 590px;
       margin: auto;
     }
-    
-    .title > h1 { 
-      margin: 10px ;
+
+    .title>h1 {
+      margin: 10px;
       color: black;
-      font-size : 25px;
+      font-size: 25px;
       font-weight: bold;
       text-align: center;
     }
-    .title > h5 { 
-      margin: 5px 0 10px ;
+
+    .title>h5 {
+      margin: 5px 0 10px;
       color: black;
-      font-size : 17px;
+      font-size: 17px;
       font-weight: normal;
       text-align: right;
     }
-    .contents > p  {
-      margin: 7px 0 10px ;
+
+    .contents>p {
+      margin: 7px 0 10px;
       color: black;
-      font-size : 15px;
+      font-size: 15px;
       font-weight: lighter;
-      text-align:auto;
+      text-align: auto;
     }
-    .intro { 
-      margin: 10px ;
+
+    .intro {
+      margin: 10px;
       color: rgb(99, 96, 96);
       font-weight: bold;
       text-align: 20rem;
@@ -68,150 +119,85 @@
       height: 300px;
       border-radius: 10px;
     }
+
     .btn {
-      margin : 7px 260px 0 260px;
+      margin: 7px 260px 0 260px;
     }
-    
-    /* table, th, td { */
-        border: 1px solid #bcbcbc;
-      }
-      /* table { */
-        width: 1000px;
-        height: 200px;
-        align: center;
-      }
-      /* td { */
-        text-align: center;
-      }
-      table {
-    width: 100%;
-    border-top: 1px solid #444444;
-    border-collapse: collapse;
-  }
-  th, td {
-    border-bottom: 1px solid #444444;
-    padding: 10px;
-  }
-     
   </style>
 
-<script>
-  function placeOrder(form) {
-    if(document.getElementById("name").value==""){
-      document.getElementById("name").focus();
-      alert("이름을 입력하세요");
-    } else if(document.getElementById("qyt").value==""){
-      document.getElementById("qyt").focus();
-      alert('수량을 선택하세요');
-    } else if(document.getElementById("address").value==""){
-      document.getElementById("address").focus();
-      alert("주소를 입력하세요");
-    } else if(document.getElementById("phn").value==""){
-      document.getElementById("phn").focus();
-      alert("전화번호를 입력하세요");
-    } else{
-        let temp_html= '<tr>\
-        <td>'+ name + '</td>\
-        <td>'+ num + '</td>\
-        <td>'+ address + '</td>\
-        <td>'+ phone + '</td>\
-        </tr>';
-        $('#order_add').append(temp_html);
-    }
-  }
-  function moveFocus(next){
-    if(event.keyCode == 13)
-       document.getElementById(next).focus();
-  }
-</script>
 </head>
+
 <body>
   <div class="wrap">
     <div class='main-image' id="product">
     </div>
     <div class="title">
       <h1>기억을 팝니다</h1>
-      <h5>198,000원/75ml</h5>       
-        <div class="contents">
-          <p class="text1">딥티크의 가장 아이코닉한 플로럴 향수를 네덜란드 사진가 바스뮤스의 정물화로 만나다.
-          </p>
-          <P class="text2">리미티드 에디션 패키지로 만나 볼 수 있는 그의 작품 속 꽃과 색상, 숨겨진 디테일들이 각 향수가 가진 후각적 세계와 스토리를 전달합니다. </P>
+      <h5>198,000원/75ml</h5>
+      <div class="contents">
+        <p class="text1">딥티크의 가장 아이코닉한 플로럴 향수를 네덜란드 사진가 바스뮤스의 정물화로 만나다.
+        </p>
+        <P class="text2">리미티드 에디션 패키지로 만나 볼 수 있는 그의 작품 속 꽃과 색상, 숨겨진 디테일들이 각 향수가 가진 후각적 세계와 스토리를 전달합니다. </P>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">주문자 이름</span>
         </div>
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">주문자 이름</span>
-          </div>
-          <input type="text" id="name" name="name" value onkeydown="moveFocus('qty');"class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
-        </div>
-        
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <label class="input-group-text" for="qty">수량</label>
-          </div>
-          <select class="custom-select" id="qyt" name="qyt" value onchange="updateOrder();"
-           onkeydown="moveFocus('address');">
-            <option selected>--수량을 선택하세요--</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-        </div>
-      
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="address">주소</span>
-          </div>
-          <input type="text" id="address" name="address" value onkeydown="moveFocus('phn');"
-          class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-        </div>
-        <!-- <div class="input-group mb-3"> -->
-          <!-- <div class="input-group-prepend"> -->
-            <!-- <span class="input-group-text" id="basic-addon3">주소</span> -->
-          <!-- </div> -->
-          <!-- <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3"> -->
-        <!-- </div> -->
+        <input type="text" class="form-control" id="name" placeholder="" aria-label="Username"
+          aria-describedby="basic-addon1">
+      </div>
 
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="phn">전화번호</span>
-          </div>
-          <input type="text" id="phn" name="phn" value onkeydown="moveFocus('confirm');" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">수량</label>
         </div>
+        <select class="custom-select" id="qyt">
+          <option selected>--수량을 선택하세요--</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon3">주소</span>
+        </div>
+        <input  type="text" class="form-control" id="address" aria-describedby="basic-addon3">
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon3">연락처</span>
+        </div>
+        <input type="text" class="form-control" id="hp" aria-describedby="basic-addon3">
+      </div>
+
+      <div class= 'order'>
+         <button onclick="confirm()" type="button" class="btn btn-primary">주문하기</button>
+      </div>
     
-        <div class= "field">
-          <input type="button" id="confirm" value="주문하기" onclick=
-          ""
-        </div> 
-        <!-- <button onclick="bt" type="button" id="confirm" value="주문하기" onclick="placeOrder(this.form);" class="btn btn-primary">주문하기</button> -->
-    </div>
-   </div>
+    <p></p>
+    <div>
+      <table class="table" styel:c>
+        <tbody>
+          <tr>
+            <th>이름</th>
+            <th>수량</th>
+            <th>주소</th>
+            <th>전화번호</th>
+          </tr>
+        </tbody>
+        <tbody class="table" id="order_list">
 
-   <div>
-      <table>
-      <thead>
-        <tr>
-          <th>이름</th>
-          <th>수량</th>
-          <th>주소</th>
-          <th>전화번호</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>번호1</td>
-          <td>제목1</td>
-          <td>날짜1</td>
-        </tr>
-        <tr>
-          <td>번호2</td>
-          <td>제목2</td>
-          <td>날짜2</td>
-        </tr>
+        </tbody>
+
+      </table>
+
       </tbody>
-      <tbody class="table" id="order_info">
-        
-      </tbody>
-    </table>
-   </div>
+      </table>
+    </div>
+  </div>
 </body>
+
 </html>
